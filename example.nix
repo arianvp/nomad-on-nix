@@ -58,6 +58,9 @@ job "batch" {
       }
       config {
         # comment the "image" line when running with driver = "exec"
+        # content of the alpine image isn't used. We only refer to bind-mounted nix store paths
+        # Just here to make nomad happy as the docker driver bind-mounts the directories early enough
+        # whilst the exec driver doesn't
         image = "alpine"
         command = "${pkgs.hello}/bin/hello"
       }
