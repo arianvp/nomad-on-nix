@@ -28,6 +28,7 @@ job "batch" {
     }
     task "batch" {
       /*
+      If I use driver = "exec"  I get:
       2020-05-10T23:15:44.839+0200 [ERROR] client.alloc_runner.task_runner: running
       driver failed: alloc_id=c03ce7a9-c530-93aa-a0a0-33ef81929ed2 task=batch
       error="failed to launch command with executor: rpc error: code = Unknown desc
