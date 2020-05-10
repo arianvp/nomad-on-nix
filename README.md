@@ -15,3 +15,15 @@ each node in the cluster can download the corresponding nix derivation from the 
 Problem is that the bind mounts do _not_ work with the `exec` driver but _do_ work
 with the `docker` driver
 
+If I use `driver = "exec"`  I get:
+
+      2020-05-10T23:15:44.839+0200 [ERROR] client.alloc_runner.task_runner: running
+      driver failed: alloc_id=c03ce7a9-c530-93aa-a0a0-33ef81929ed2 task=batch
+      error="failed to launch command with executor: rpc error: code = Unknown desc
+      = file /nix/store/y26qxcq1gg2hrqpxdc58b2fghv2bhxjg-hello-2.10/bin/hello not
+      found under path
+      /tmp/NomadClient378332617/c03ce7a9-c530-93aa-a0a0-33ef81929ed2/batch"
+      
+
+But with `driver = "docker"` it works fine.
+Seems like the `exec` driver bind-mounts their paths too late
